@@ -12,6 +12,7 @@ pipeline {
             steps {
                 sh '''
                     ls -la
+                    npm install -g npm@10.8.3
                     node --version
                     npm --version
                     rm -rf node_modules
