@@ -19,6 +19,11 @@ pipeline {
                     ls -la
                  '''
             }
+        stage('test'){
+            agent any {
+                sh 'echo "Test stage"'
+            }
         }
+    }
     }
 }
