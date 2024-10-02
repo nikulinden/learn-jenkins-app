@@ -1,11 +1,10 @@
 pipeline {
-    agent any
-    // agent {
-    //     docker {
-    //         image 'node:18-alpine'
-    //         reuseNode true
-    //         }
-    // }
+    agent {
+        docker {
+            image 'node:18-alpine'
+            reuseNode true
+            }
+    }
     stages {
         stage('Install dependencies ...'){
             steps {
@@ -16,12 +15,12 @@ pipeline {
             }
         }
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:18-alpine'
-                    reuseNode true
-                }
-            }            
+            // agent {
+            //     docker {
+            //         image 'node:18-alpine'
+            //         reuseNode true
+            //     }
+            // }            
             steps {
                 sh '''
                     ls -la
