@@ -30,6 +30,7 @@ pipeline {
             steps {
                 sh 'echo "Testing..."'
                 sh 'npm test'
+                sh 'test build/index.html'
             }
         }
     }
