@@ -59,7 +59,7 @@ pipeline {
                     done
             
                     # Run Playwright tests
-                    npx playwright test
+                    npx playwright test --reporter=html
                 '''
             }
         }
