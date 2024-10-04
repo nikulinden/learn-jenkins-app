@@ -47,9 +47,18 @@ pipeline {
             }
             steps {
                 sh '''
+                    # Install serve to serve the production build
                     npm install serve
-                    snode_modules/.bin/serve -s build &
-                    sleep 10
+            
+                    # Start the app on port 3000 in the background
+                    PORT=3000 node_modules/.bin/serve -s build &
+            
+                    # Check for server readiness, retry for 5 times with 5 seconds delay
+                    for i in {1..5}; do
+                        curl --fail http://localhost:3000/ && break || sleep 5;
+                    done
+            
+                    # Run Playwright tests
                     npx playwright test
                 '''
             }
